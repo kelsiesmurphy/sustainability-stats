@@ -22,14 +22,16 @@ const StatsTable = () => {
   };
 
   const sortedFrameworksData = [...frameworks].sort(
-    (a: number, b: number) => a[sortHeading] - b[sortHeading]
+    (a: any, b: any) => a[sortHeading] - b[sortHeading]
   );
 
   return (
     <Layout>
       <div className='flex max-w-5xl flex-col gap-8'>
-        <div className='flex justify-between items-center'>
-          <h2 className='text-xl font-medium text-slate-700 ml-4'>Benchmarks</h2>
+        <div className='flex items-center justify-between'>
+          <h2 className='ml-4 text-xl font-medium text-slate-700'>
+            Benchmarks
+          </h2>
           <SelectSorting setSortHeading={handleSortChange} />
         </div>
         <Table className='rounded-md bg-slate-100/30 backdrop-blur-md'>

@@ -75,7 +75,11 @@ export default function APISearch() {
             <Button type='submit'>Submit</Button>
           </form>
         </Form>
-        {jsonResponse ? <ReactJson src={jsonResponse} /> : ''}
+        {jsonResponse ? (
+          <ReactJson src={jsonResponse} collapseStringsAfterLength={5} />
+        ) : (
+          ''
+        )}
       </div>
     </Layout>
   );
