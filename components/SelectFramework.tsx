@@ -7,7 +7,11 @@ import {
 } from '@/components/ui/select';
 import { frameworks } from '@/data/Frameworks';
 
-const SelectFramework = ({ setSelectedFramework }) => {
+const SelectFramework = ({
+  setSelectedFramework,
+}: {
+  setSelectedFramework: any;
+}) => {
   return (
     <Select onValueChange={(value) => setSelectedFramework(value)}>
       <SelectTrigger className='w-[180px]'>
@@ -16,10 +20,7 @@ const SelectFramework = ({ setSelectedFramework }) => {
       <SelectContent>
         {frameworks.map((framework, index) => {
           return (
-            <SelectItem
-              key={index}
-              value={framework['Framework Name']}
-            >
+            <SelectItem key={index} value={framework['Framework Name']}>
               {framework['Framework Name']}
             </SelectItem>
           );

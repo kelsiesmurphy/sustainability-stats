@@ -9,8 +9,8 @@ import {
 import { frameworks } from '@/data/Frameworks';
 import { useEffect, useState } from 'react';
 
-const Graph = ({ selectedFramework }) => {
-  const [frameworkObject, setFrameworkObject] = useState({});
+const Graph = ({ selectedFramework }: { selectedFramework: any }) => {
+  const [frameworkObject, setFrameworkObject] = useState<any>({});
 
   useEffect(() => {
     setFrameworkObject(
