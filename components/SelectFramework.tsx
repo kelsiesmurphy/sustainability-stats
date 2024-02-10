@@ -13,7 +13,10 @@ const SelectFramework = ({
   setSelectedFramework: any;
 }) => {
   return (
-    <Select onValueChange={(value) => setSelectedFramework(value)}>
+    <Select
+      defaultValue={frameworks[0]['Framework Name']}
+      onValueChange={(value) => setSelectedFramework(value)}
+    >
       <SelectTrigger className='w-[180px]'>
         <SelectValue placeholder='Framework' />
       </SelectTrigger>

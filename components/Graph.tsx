@@ -23,8 +23,8 @@ const Graph = ({ selectedFramework }: { selectedFramework: any }) => {
   const data = frameworkObject
     ? [
         {
-          name: 'CO2 per visit (g)',
-          value: frameworkObject['CO2 per visit (g)'],
+          name: 'Page Weight (kB)',
+          value: frameworkObject['Page Weight (KB)'],
         },
         {
           name: 'Resources (kB)',
@@ -49,9 +49,9 @@ const Graph = ({ selectedFramework }: { selectedFramework: any }) => {
         <Radar
           name={selectedFramework}
           dataKey='value'
-          stroke='#82ca9d'
-          fill='#82ca9d'
-          fillOpacity={0.6}
+          stroke='#475569'
+          fill='#475569'
+          fillOpacity={0.3}
         />
         <Legend />
         <Tooltip />

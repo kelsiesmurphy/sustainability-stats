@@ -3,6 +3,7 @@
 import Intro from '@/components/Intro';
 import GraphSection from '@/components/GraphSection';
 import StatsTable from '@/components/StatsTable';
+import APISearch from '@/components/APISearch';
 
 export default function Home() {
   if (typeof window !== 'undefined') {
@@ -20,12 +21,12 @@ export default function Home() {
     };
   }
 
-  const sections = [<Intro />, <StatsTable />, <GraphSection />];
+  const sections = [<Intro />, <StatsTable />, <GraphSection />, <APISearch />];
 
   return (
     <main>
       <div id='blob'></div>
-      <div id='blur'>
+      <div id='blur' className='space-y-24'>
         {sections.map((section, index) => {
           return <div key={index}>{section}</div>;
         })}

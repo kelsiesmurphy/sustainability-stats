@@ -11,47 +11,67 @@ import {
 } from '@/components/ui/table';
 
 import { frameworks } from '@/data/Frameworks';
+import { useState } from 'react';
+import SelectSorting from './SelectSorting';
 
 const StatsTable = () => {
+  const [sortHeading, setSortHeading] = useState<string>('CO2 per visit (g)');
+
+  const handleSortChange = (newSortHeading: string) => {
+    setSortHeading(newSortHeading);
+  };
+
+  const sortedFrameworksData = [...frameworks].sort(
+    (a: number, b: number) => a[sortHeading] - b[sortHeading]
+  );
+
   return (
     <Layout>
-      <Table className='max-w-5xl rounded-md bg-slate-100/30 backdrop-blur-md'>
-        <TableCaption>
-          <a
-            href='https://github.com/kelsiesmurphy/sustainable-framework-testing'
-            target='_blank'
-            className='hover:underline'
-          >
-            Frontend framework sustainability benchmarks (02/2024)
-          </a>
-        </TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className='w-[100px]'>Framework</TableHead>
-            <TableHead>Resources on page load (kB)</TableHead>
-            <TableHead>Page weight (kb)</TableHead>
-            <TableHead>Average loading time (ms)</TableHead>
-            <TableHead>Link</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {frameworks.map((framework) => (
-            <TableRow key={framework['Framework Name']}>
-              <TableCell className='font-medium'>
-                {framework['Framework Name']}
-              </TableCell>
-              <TableCell>{framework['Resources (kB)']}</TableCell>
-              <TableCell>{framework['Page Weight (KB)']}</TableCell>
-              <TableCell>{framework['Average Load (ms)']}</TableCell>
-              <TableCell>
-                <a href={framework.Link} target='_blank'>
-                  <LinkIcon />
-                </a>
-              </TableCell>
+      <div className='flex max-w-5xl flex-col gap-8'>
+        <div className='flex justify-between items-center'>
+          <h2 className='text-xl font-medium text-slate-700 ml-4'>Benchmarks</h2>
+          <SelectSorting setSortHeading={handleSortChange} />
+        </div>
+        <Table className='rounded-md bg-slate-100/30 backdrop-blur-md'>
+          <TableCaption>
+            <a
+              href='https://github.com/kelsiesmurphy/sustainable-framework-testing'
+              target='_blank'
+              className='hover:underline'
+            >
+              Frontend framework sustainability benchmarks (02/2024)
+            </a>
+          </TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className='w-[200px]'>Framework</TableHead>
+              <TableHead>Resources on page load (kB)</TableHead>
+              <TableHead>Page weight (kb)</TableHead>
+              <TableHead>Average loading time (ms)</TableHead>
+              <TableHead>CO2 per visit (g)</TableHead>
+              <TableHead>Link</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody className='text-slate-600'>
+            {sortedFrameworksData.map((framework) => (
+              <TableRow key={framework['Framework Name']}>
+                <TableCell className='font-medium'>
+                  {framework['Framework Name']}
+                </TableCell>
+                <TableCell>{framework['Resources (kB)']}</TableCell>
+                <TableCell>{framework['Page Weight (KB)']}</TableCell>
+                <TableCell>{framework['Average Load (ms)']}</TableCell>
+                <TableCell>{framework['CO2 per visit (g)']}</TableCell>
+                <TableCell>
+                  <a href={framework.Link} target='_blank'>
+                    <LinkIcon />
+                  </a>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </Layout>
   );
 };
