@@ -15,7 +15,7 @@ import {
 import { Input } from '@/components/ui/input';
 import Layout from './Layout';
 import { useState } from 'react';
-import ReactJson from 'react-json-view';
+// import ReactJson from 'react-json-view';
 
 const formSchema = z.object({
   website: z.string().min(2, {
@@ -75,11 +75,11 @@ export default function APISearch() {
             <Button type='submit'>Submit</Button>
           </form>
         </Form>
-        {jsonResponse ? (
+        {/* {jsonResponse ? (
           <ReactJson src={jsonResponse} collapseStringsAfterLength={5} />
         ) : (
           ''
-        )}
+        )} */}
       </div>
     </Layout>
   );

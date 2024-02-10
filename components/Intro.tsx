@@ -1,9 +1,14 @@
-import Layout from "./Layout"
+import Earth from './Earth';
+import Layout from './Layout';
 
 const Intro = () => {
   return (
-    <Layout>Intro</Layout>
-  )
-}
+    <Layout>
+      <div className='max-w-2xl'>
+        <Earth />
+      </div>
+    </Layout>
+  );
+};
 
-export default Intro
+export default Intro;

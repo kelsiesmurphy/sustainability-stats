@@ -21,7 +21,12 @@ export default function Home() {
     };
   }
 
-  const sections = [<Intro />, <StatsTable />, <GraphSection />, <APISearch />];
+  const sections = [
+    <Intro />, 
+    <StatsTable />, 
+    <GraphSection />, 
+    <APISearch />
+];
 
   return (
     <main>
