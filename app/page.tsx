@@ -1,5 +1,9 @@
 'use client';
 
+import Intro from '@/components/Intro';
+import GraphSection from '@/components/GraphSection';
+import StatsTable from '@/components/StatsTable';
+
 export default function Home() {
   if (typeof window !== 'undefined') {
     const blob = document.getElementById('blob');
@@ -16,14 +20,15 @@ export default function Home() {
     };
   }
 
+  const sections = [<Intro />, <StatsTable />, <GraphSection />];
+
   return (
-    <main className='overscroll-none'>
+    <main>
       <div id='blob'></div>
-      <div
-        id='blur'
-        className='flex min-h-screen flex-col items-center justify-between p-24'
-      >
-        <h1>hello</h1>
+      <div id='blur'>
+        {sections.map((section, index) => {
+          return <div key={index}>{section}</div>;
+        })}
       </div>
     </main>
   );
