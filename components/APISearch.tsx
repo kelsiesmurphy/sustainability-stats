@@ -15,7 +15,7 @@ import {
 import { Input } from '@/components/ui/input';
 import Layout from './Layout';
 import { useState } from 'react';
-// import ReactJson from 'react-json-view';
+import APIResponse from './APIResponse';
 
 const formSchema = z.object({
   website: z.string().min(2, {
@@ -25,6 +25,7 @@ const formSchema = z.object({
 
 export default function APISearch() {
   const [jsonResponse, setJsonResponse] = useState<any>();
+  const [websiteUrl, setWebsiteUrl] = useState<string | null>();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -33,10 +34,24 @@ export default function APISearch() {
     },
   });
 
+  function processURL(inputURL: string) {
+    const hostnameRegex = /^(?:https?:\/\/)?([^\/]+)(?:\/.*)?$/;
+
+    const match = inputURL.match(hostnameRegex);
+
+    if (match && match[1]) {
+      return match[1];
+    } else {
+      return null;
+    }
+  }
+
   const getAPIResponse = async (url: string) => {
     try {
+      const processedURL = processURL(url);
+      setWebsiteUrl(processedURL)
       const response = await fetch(
-        `https://api.thegreenwebfoundation.org/api/v3/greencheck/${url}`
+        `https://api.thegreenwebfoundation.org/api/v3/greencheck/${processedURL}`
       );
       const json = await response.json();
       return json;
@@ -46,7 +61,6 @@ export default function APISearch() {
   };
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     getAPIResponse(values.website).then((data) => setJsonResponse(data));
   }
 
@@ -75,11 +89,9 @@ export default function APISearch() {
             <Button type='submit'>Submit</Button>
           </form>
         </Form>
-        {/* {jsonResponse ? (
-          <ReactJson src={jsonResponse} collapseStringsAfterLength={5} />
-        ) : (
-          ''
-        )} */}
+        {jsonResponse && (
+          <APIResponse jsonResponse={jsonResponse} websiteUrl={websiteUrl!} />
+        )}
       </div>
     </Layout>
   );

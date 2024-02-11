@@ -43,7 +43,7 @@ const Graph = ({ selectedFramework }: { selectedFramework: any }) => {
 
   return (
     <>
-      <RadarChart outerRadius={250} width={1000} height={700} data={data}>
+      <RadarChart id='test' outerRadius={250} width={1000} height={700} data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey='name' />
         <Radar
