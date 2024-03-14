@@ -1,8 +1,6 @@
-import Layout from './Layout';
 
 const Intro = () => {
   return (
-    <Layout>
       <div className='max-w-2xl space-y-4'>
         <h1 className='text-2xl font-semibold text-slate-700 md:text-3xl'>
           Sustainable Software Engineering
@@ -14,7 +12,6 @@ const Intro = () => {
           emissions.
         </h2>
       </div>
-    </Layout>
   );
 };
 

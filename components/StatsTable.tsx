@@ -1,5 +1,4 @@
 import { LinkIcon } from './LinkIcon';
-import Layout from './Layout';
 import {
   Table,
   TableBody,
@@ -27,7 +26,7 @@ const StatsTable = () => {
   );
 
   return (
-    <Layout>
+    <div className='flex items-center justify-center'>
       <div className='flex max-w-5xl flex-col gap-8'>
         <div className='flex items-center justify-between'>
           <h2 className='ml-4 text-xl font-medium text-slate-700'>
@@ -38,7 +37,7 @@ const StatsTable = () => {
         <div className='px-4'>
           <Constants />
         </div>
-        <Table className='rounded-md bg-slate-100/30 backdrop-blur-md'>
+        <Table>
           <TableCaption>
             <a
               href='https://github.com/kelsiesmurphy/sustainable-framework-testing'
@@ -80,7 +79,7 @@ const StatsTable = () => {
           </TableBody>
         </Table>
       </div>
-    </Layout>
+    </div>
   );
 };
 

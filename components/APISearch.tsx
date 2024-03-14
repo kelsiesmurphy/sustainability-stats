@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import Layout from './Layout';
 import { useState } from 'react';
 import APIResponse from './APIResponse';
 
@@ -49,7 +48,7 @@ export default function APISearch() {
   const getAPIResponse = async (url: string) => {
     try {
       const processedURL = processURL(url);
-      setWebsiteUrl(processedURL)
+      setWebsiteUrl(processedURL);
       const response = await fetch(
         `https://api.thegreenwebfoundation.org/api/v3/greencheck/${processedURL}`
       );
@@ -65,7 +64,7 @@ export default function APISearch() {
   }
 
   return (
-    <Layout>
+    <div className='flex items-center justify-center'>
       <div className='flex max-w-xl flex-col gap-8'>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
@@ -93,6 +92,6 @@ export default function APISearch() {
           <APIResponse jsonResponse={jsonResponse} websiteUrl={websiteUrl!} />
         )}
       </div>
-    </Layout>
+    </div>
   );
 }

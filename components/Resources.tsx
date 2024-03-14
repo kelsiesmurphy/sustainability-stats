@@ -1,15 +1,14 @@
-import Layout from './Layout';
 import { Resources as resourcesData } from '@/data/Resources';
 
 const Resources = () => {
   return (
-    <Layout>
+    <div className='flex items-center justify-center'>
       <div className='space-y-6 text-lg'>
         <h2 className='text-xl font-semibold md:text-2xl'>Resources</h2>
         <ul className='list-inside list-disc space-y-2'>
-          {resourcesData.map((resource) => {
+          {resourcesData.map((resource, index) => {
             return (
-              <li>
+              <li key={index}>
                 ({resource.type}) -{' '}
                 <a
                   className='hover:underline'
@@ -23,7 +22,7 @@ const Resources = () => {
           })}
         </ul>
       </div>
-    </Layout>
+    </div>
   );
 };
 
