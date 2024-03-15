@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { buttonVariants } from './ui/button';
-import { Github } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { MobileDrawer } from './MobileDrawer';
 
@@ -10,6 +9,10 @@ export const navigationItems = [
   {
     title: 'Home',
     link: '/',
+  },
+  {
+    title: 'About',
+    link: '/about-me',
   },
   {
     title: 'Table',
