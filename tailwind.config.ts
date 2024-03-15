@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       backgroundImage: {
-        gradient: "url('/background.jpg')",
+        gradient: "url('/background.webp')",
       },
       colors: {
         border: 'hsl(var(--border))',
