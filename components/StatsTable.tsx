@@ -33,13 +33,15 @@ const StatsTable = () => {
   );
 
   return (
-    <div className='flex items-center justify-center'>
-      <div className='flex max-w-5xl flex-col gap-8'>
+    <div className='flex items-center flex-1 md:justify-center'>
+      <div className='flex flex-1 max-w-5xl flex-col gap-8'>
         <div className='flex items-center justify-between'>
           <h2 className='ml-4 text-lg font-medium text-slate-700 md:text-xl'>
             Benchmarks
           </h2>
-          <SelectSorting setSortHeading={handleSortChange} />
+          <div className='hidden md:inline'>
+            <SelectSorting setSortHeading={handleSortChange} />
+          </div>
         </div>
         <div className='px-4'>
           <Constants />
@@ -56,7 +58,7 @@ const StatsTable = () => {
           </TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className='w-[200px]'>Framework</TableHead>
+              <TableHead className='min-w-[200px]'>Framework</TableHead>
               <TableHead className='hidden md:table-cell'>
                 CO2 per visit (g)
               </TableHead>
@@ -73,6 +75,7 @@ const StatsTable = () => {
                 Ecograder score
               </TableHead>
               <TableHead>Link</TableHead>
+              <TableHead className='md:hidden'></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody className='text-slate-600'>
@@ -114,19 +117,34 @@ const StatsTable = () => {
                   <CollapsibleContent asChild>
                     <div className='flex flex-col px-4 py-2'>
                       <p className='p-2'>
-                        CO2 per visit: {framework['CO2 per visit (g)']} g
+                        CO2 per visit:{' '}
+                        <span className='font-medium'>
+                          {framework['CO2 per visit (g)']} g
+                        </span>
                       </p>
                       <p className='p-2'>
-                        Resources: {framework['Resources (kB)']} kB
+                        Resources:{' '}
+                        <span className='font-medium'>
+                          {framework['Resources (kB)']} kB
+                        </span>
                       </p>
                       <p className='p-2'>
-                        Page Weight: {framework['Page Weight (KB)']} kB
+                        Page Weight:{' '}
+                        <span className='font-medium'>
+                          {framework['Page Weight (KB)']} kB
+                        </span>
                       </p>
                       <p className='p-2'>
-                        Average Load: {framework['Average Load (ms)']} ms
+                        Average Load:{' '}
+                        <span className='font-medium'>
+                          {framework['Average Load (ms)']} ms
+                        </span>
                       </p>
                       <p className='p-2'>
-                        EcoGrader Score: {framework['EcoGrader Score']}
+                        EcoGrader Score:{' '}
+                        <span className='font-medium'>
+                          {framework['EcoGrader Score']}
+                        </span>
                       </p>
                     </div>
                   </CollapsibleContent>

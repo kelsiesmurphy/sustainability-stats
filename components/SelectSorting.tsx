@@ -16,7 +16,7 @@ const SelectSorting = ({ setSortHeading }: { setSortHeading: any }) => {
   return (
     <Select
       defaultValue={sortHeadings[0]}
-      onValueChange={(value) => setSortHeading(value)}
+      onValueChange={(value) => setSortHeading(value)} 
     >
       <SelectTrigger className='w-[180px]'>
         <SelectValue placeholder='Framework' />
