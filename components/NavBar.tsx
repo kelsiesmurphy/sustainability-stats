@@ -4,34 +4,39 @@ import Link from 'next/link';
 import { buttonVariants } from './ui/button';
 import { Github } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { MobileDrawer } from './MobileDrawer';
+
+export const navigationItems = [
+  {
+    title: 'Home',
+    link: '/',
+  },
+  {
+    title: 'Table',
+    link: '/table',
+  },
+  {
+    title: 'Chart',
+    link: '/radar',
+  },
+  {
+    title: 'API',
+    link: '/api-search',
+  },
+  {
+    title: 'Resources',
+    link: '/resources',
+  },
+];
 
 const NavBar = () => {
   const pathname = usePathname();
 
-  const navigationItems = [
-    {
-      title: 'Home',
-      link: '/',
-    },
-    {
-      title: 'Table',
-      link: '/table',
-    },
-    {
-      title: 'Chart',
-      link: '/radar',
-    },
-    {
-      title: 'API',
-      link: '/api-search',
-    },
-    {
-      title: 'Resources',
-      link: '/resources',
-    },
-  ];
   return (
     <nav className='container flex items-center justify-between gap-4 p-4'>
+      <div className='sm:hidden'>
+        <MobileDrawer />
+      </div>
       <Link
         className={
           buttonVariants({ variant: 'ghost' }) +
@@ -77,9 +82,6 @@ const NavBar = () => {
             </svg>
           </div>
         </Link>
-        <div className='sm:hidden'>
-          {/* <MobileNavigation {session} {supabase} {navigationItems} /> */}
-        </div>
       </div>
     </nav>
   );
