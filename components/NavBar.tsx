@@ -23,6 +23,10 @@ export const navigationItems = [
     link: '/radar',
   },
   {
+    title: 'Image',
+    link: '/image',
+  },
+  {
     title: 'API',
     link: '/api-search',
   },
